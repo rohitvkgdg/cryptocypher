@@ -4,11 +4,11 @@ import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
 interface WalletGeneratorProps {
-  keyPhrase: string
+  keyPhrase?: string
   onGenerate: (chain: Chain) => void
 }
 
-export function WalletGenerator({ keyPhrase, onGenerate }: WalletGeneratorProps) {
+export function WalletGenerator({ onGenerate }: WalletGeneratorProps) {
   const [selectedChain, setSelectedChain] = useState<Chain | ''>('')
 
   const handleGenerate = () => {
