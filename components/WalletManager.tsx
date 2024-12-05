@@ -3,8 +3,10 @@
 import React, { useState, useEffect } from 'react'
 import { WalletGenerator } from './WalletGenerator'
 import { DarkModeToggle } from './DarkModeToggle'
-import { Account, Chain, Wallet, generateKeyPhrase, generateWalletAddress } from '../utils/walletUtils'
+import { Account, generateKeyPhrase } from '../utils/walletUtils'
 import { Button } from '@/components/ui/button'
+import { Spinner } from '@nextui-org/react';
+
 
 export function WalletManager() {
   const [account, setAccount] = useState<Account | null>(null)
@@ -28,43 +30,13 @@ export function WalletManager() {
     setAccount(newAccount)
   }
 
-  const generateNewKeyPhrase = () => {
-    if (account) {
-      setAccount({
-        ...account,
-        keyPhrase: generateKeyPhrase(),
-        wallets: [], // Clear existing wallets as they won't be valid with the new key phrase
-      })
-    }
-  }
-
-  const generateWallet = (chain: Chain) => {
-    if (account) {
-      const newWallet: Wallet = {
-        id: Date.now().toString(),
-        chain,
-        address: generateWalletAddress(account.keyPhrase, chain),
-      }
-      setAccount({
-        ...account,
-        wallets: [...account.wallets, newWallet],
-      })
-    }
-  }
-
-  const deleteWallet = (id: string) => {
-    if (account) {
-      setAccount({
-        ...account,
-        wallets: account.wallets.filter((wallet) => wallet.id !== id),
-      })
-    }
-  }
-
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-        <p>Loading...</p>
+      <div className="flex items-center justify-center min-h-screen bg-black dark:bg-black">
+        <Spinner size="lg" />
+        <div className='hidden'>
+        <DarkModeToggle/>
+        </div>
       </div>
     )
   }

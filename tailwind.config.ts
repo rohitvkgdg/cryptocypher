@@ -1,11 +1,13 @@
+import {nextui} from '@nextui-org/theme';
 import type { Config } from "tailwindcss";
 
 export default {
     darkMode: ["class"],
-    content: [
+  content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@nextui-org/theme/dist/components/spinner.js"
   ],
   theme: {
   	extend: {
@@ -58,5 +60,7 @@ export default {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  /* trunk-ignore(eslint/@typescript-eslint/no-require-imports) */
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  plugins: [require("tailwindcss-animate"),nextui()],
 } satisfies Config;
