@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react'
 import { WalletGenerator } from './WalletGenerator'
-import { WalletList } from './WalletList'
 import { DarkModeToggle } from './DarkModeToggle'
 import { Account, Chain, Wallet, generateKeyPhrase, generateWalletAddress } from '../utils/walletUtils'
 import { Button } from '@/components/ui/button'
@@ -72,36 +71,30 @@ export function WalletManager() {
 
   if (!account) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-white dark:bg-black text-gray-900 dark:text-gray-100">
         <div className="absolute top-4 right-4">
           <DarkModeToggle />
         </div>
-        <h1 className="text-2xl font-bold mb-4">Welcome to Crypto Wallet Manager</h1>
+        <h1 className="text-2xl font-bold mb-4">Welcome to CryptoCypher</h1>
         <Button onClick={createAccount}>Create Account</Button>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div className="min-h-screen p-10 bg-white dark:bg-black text-gray-900 dark:text-gray-100">
       <div className="container mx-auto p-4 max-w-2xl">
-        <div className="flex justify-between items-center mb-4">
-          <h1 className="text-2xl font-bold">Crypto Wallet Manager</h1>
+        <div className="flex justify-between mb-4">
+          <div></div>
+          <h1 className="text-4xl font-bold">CryptoCypher</h1>
+          <div className="self-end">
           <DarkModeToggle />
-        </div>
-        <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg mb-4">
-          <div className="flex justify-between items-center mb-2">
-            <h2 className="text-lg font-semibold">Your Key Phrase</h2>
-            <Button variant="outline" size="sm" onClick={generateNewKeyPhrase}>
-              Generate New Key Phrase
-            </Button>
           </div>
-          <p className="text-sm bg-white dark:bg-gray-700 p-2 rounded">{account.keyPhrase}</p>
         </div>
-        <WalletGenerator keyPhrase={account.keyPhrase} onGenerate={generateWallet} />
+        <WalletGenerator />
         <div className="mt-8">
-          <WalletList wallets={account.wallets} onDelete={deleteWallet} />
         </div>
+        
       </div>
     </div>
   )

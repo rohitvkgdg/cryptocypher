@@ -21,7 +21,7 @@ export function DarkModeToggle() {
   }
 
   return (
-    <Button variant="ghost" size="icon" onClick={toggleDarkMode} aria-label="Toggle dark mode">
+    <Button variant="outline" size="icon" onClick={toggleDarkMode} aria-label="Toggle dark mode">
       {darkMode ? <Sun className="h-[1.2rem] w-[1.2rem]" /> : <Moon className="h-[1.2rem] w-[1.2rem]" />}
     </Button>
   )
