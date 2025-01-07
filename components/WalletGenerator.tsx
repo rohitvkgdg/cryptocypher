@@ -46,7 +46,7 @@ export function WalletGenerator() {
   const [gridView, setGridView] = useState<boolean>(false);
   const pathTypeNames: { [key: string]: string } = {
     "501": "Solana",
-    "60": "Ethereum",
+    "60": "Ethereum/Polygon/Base",
   };
   const pathTypeName = pathTypeNames[pathTypes[0]] || "";
 
